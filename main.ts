@@ -46,14 +46,17 @@ function CheckUp () {
     }
 }
 input.onButtonPressed(Button.B, function () {
-    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 99)
-    basic.pause(1000)
-    maqueen.motorStop(maqueen.Motors.All)
+    for (let index = 0; index < 1024; index++) {
+        strip.rotate(1)
+        strip.show()
+    }
 })
 let Delay = 0
+let strip: neopixel.Strip = null
+strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 Delay = 750
 AllStop()
 basic.showIcon(IconNames.Heart)
-basic.forever(function () {
-	
-})
+strip.clear()
+strip.show()
+strip.showRainbow(1, 360)
